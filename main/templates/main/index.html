@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+<body>
+    {% if content %}
+    <p>Content</p>
+        {{ content }}
+    {% endif %}
+
+    {% if bool %}
+    {% for obj in list %}
+        <p>{{ obj }}</p>
+    {% endfor %}
+    {% endif %}
+    {{ dict.first }}
+    {% comment %} 
+        instead of indexes use dot for elements of make_list
+        Exaple: list.0
+    {% endcomment %}
+</body>
+</html>
