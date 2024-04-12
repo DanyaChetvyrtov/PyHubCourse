@@ -2,6 +2,10 @@
 {% load static %}
 {% load goods_tags %}
 
+{% block modal_cart %}
+    {% include "includes/cart_button.html" %}
+{% endblock  %}
+
 {% block css %}
     <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
 {% endblock css %}
@@ -83,12 +87,12 @@
                 <p class="card-text ">
                     
                     {% autoescape off %}
-                    {% if prod.bodyline %}
-                        {{ prod.bodyline|truncatechars:100 }}
-                    {% else %}
-                        {{ prod.description|truncatechars:35 }}
-                    {% endif %}
-                {% endautoescape %}
+                        {% if prod.bodyline %}
+                            {{ prod.bodyline|truncatechars:100 }}
+                        {% else %}
+                            {{ prod.description|truncatechars:35 }}
+                        {% endif %}
+                    {% endautoescape %}
 
 
                 </p>
@@ -103,7 +107,7 @@
                         <p><strong>{{ prod.sell_price }} $</strong></p>
                     {% endif %}
 
-                    <a href="#" class="btn add-to-cart">
+                    <a href="{% url "cart:cart_add" prod.slug %}" class="btn add-to-cart">
                         <img class="mx-1" src="{% static "/deps/icons/cart-plus.svg" %}" alt="Catalog Icon"
                             width="32" height="32">
                     </a>
